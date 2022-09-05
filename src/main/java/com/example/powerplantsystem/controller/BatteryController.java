@@ -8,12 +8,17 @@ import com.example.powerplantsystem.utils.MapperUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@Validated
 @RequestMapping("/batteries")
 public class BatteryController {
 
@@ -25,13 +30,13 @@ public class BatteryController {
         this.modelMapper = modelMapper;
     }
     @PostMapping
-    public ResponseEntity<List<BatteryDto>> saveBatteries(@RequestBody List<BatteryDto> batteries){
+    public ResponseEntity<List<BatteryDto>> saveBatteries(@RequestBody @NotEmpty List<BatteryDto> batteries){
         batteryService.saveBatteries(MapperUtils.mapAll(batteries, Battery.class));
         return new ResponseEntity<>(batteries, HttpStatus.CREATED);
 
     }
     @GetMapping
-    public ResponseEntity<BatteryStatisticDto> getBatteryInRange(@RequestParam int from, @RequestParam int to){
+    public ResponseEntity<BatteryStatisticDto> getBatteryInRange(@RequestParam @Min(value = 1) @NotNull int from, @NotNull @RequestParam int to){
         List<Battery> batteries = batteryService.getBatteriesInRange(from, to);
         List<String> batteryNames = batteries.stream().
                 map(Battery::getName).

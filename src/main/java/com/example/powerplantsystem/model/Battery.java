@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Data
@@ -24,6 +26,7 @@ public class Battery {
     private int id;
     @NotNull
     private String name;
+    @Min(value = 1, message = "Post code must be greater than zero.")
     private int postcode;
     private double wattCapacity;
 
