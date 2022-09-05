@@ -1,6 +1,9 @@
 package com.example.powerplantsystem.utils;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
@@ -8,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Data
 public class MapperUtils {
     private static final ModelMapper modelMapper;
 

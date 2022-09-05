@@ -15,6 +15,11 @@
     <description>PowerPlantSystem</description>
     <properties>
         <java.version>11</java.version>
+	  <!-- JaCoCo Properties -->
+	  <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+	  <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+	  <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+	  <sonar.language>java</sonar.language>
     </properties>
     <dependencies>
         <dependency>
@@ -79,6 +84,26 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+	<plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+                <executions>
+                    <execution>
+                        <id>jacoco-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

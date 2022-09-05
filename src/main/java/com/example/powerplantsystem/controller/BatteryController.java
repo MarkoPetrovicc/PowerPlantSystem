@@ -5,7 +5,6 @@ import com.example.powerplantsystem.dto.BatteryStatisticDto;
 import com.example.powerplantsystem.model.Battery;
 import com.example.powerplantsystem.service.BatteryService;
 import com.example.powerplantsystem.utils.MapperUtils;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,11 +22,9 @@ import java.util.stream.Collectors;
 public class BatteryController {
 
     private final BatteryService batteryService;
-    private final ModelMapper modelMapper;
 
-    public BatteryController(BatteryService batteryService, ModelMapper modelMapper) {
+    public BatteryController(BatteryService batteryService) {
         this.batteryService = batteryService;
-        this.modelMapper = modelMapper;
     }
     @PostMapping
     public ResponseEntity<List<BatteryDto>> saveBatteries(@RequestBody @NotEmpty List<BatteryDto> batteries){
