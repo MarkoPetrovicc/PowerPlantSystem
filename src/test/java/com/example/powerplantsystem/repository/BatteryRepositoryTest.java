@@ -42,8 +42,4 @@ class BatteryRepositoryTest {
 
         assertEquals(batteries.size(), savedBatteries.size());
     }
-    @Test
-    void givenPostCode_shouldBeInRange(){
-
-    }
 }
