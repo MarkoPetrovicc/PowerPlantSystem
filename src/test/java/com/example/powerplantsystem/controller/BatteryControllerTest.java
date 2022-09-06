@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BatteryController.class)
-public class BatteryControllerTest {
+class BatteryControllerTest {
 
     @Autowired
     MockMvc mockMvc;

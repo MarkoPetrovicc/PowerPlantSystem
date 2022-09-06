@@ -9,9 +9,9 @@ import java.util.List;
 @AllArgsConstructor
 public class BatteryStatisticDto {
 
-    public List<String> name;
-    public double totalWattCapacity;
-    public double averageWattCapacity;
+    private List<String> name;
+    private double totalWattCapacity;
+    private double averageWattCapacity;
 
 
 }
