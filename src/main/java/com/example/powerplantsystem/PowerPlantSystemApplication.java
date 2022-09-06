@@ -11,4 +11,8 @@ public class PowerPlantSystemApplication {
         SpringApplication.run(PowerPlantSystemApplication.class, args);
     }
 
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 }
